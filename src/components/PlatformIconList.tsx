@@ -1,0 +1,44 @@
+import {
+  FaWindows,
+  FaPlaystation,
+  FaXbox,
+  FaApple,
+  FaLinux,
+  FaAndroid,
+} from "react-icons/fa";
+
+import { MdPhoneIphone } from "react-icons/md";
+import { SiNintendo } from "react-icons/si";
+import { BsGlobe } from "react-icons/bs";
+import { HStack, Icon } from "@chakra-ui/react";
+import type { IconType } from "react-icons";
+
+import type { Platform } from "../hooks/useGames";
+
+interface Props {
+  // remember to use interface for only obj
+  platform: Platform[];
+}
+
+const PlatformIconList = ({ platform }: Props) => {
+  const iconMap: { [key: string]: IconType } = {
+    pc: FaWindows,
+    playstation: FaPlaystation,
+    xbox: FaXbox,
+    nintendo: SiNintendo,
+    mac: FaApple,
+    linux: FaLinux,
+    android: FaAndroid,
+    ios: MdPhoneIphone,
+    web: BsGlobe,
+  };
+  return (
+    <HStack marginY={1}>
+      {platform.map((platform) => (
+        <Icon as={iconMap[platform.slug]} color="gray.500" />
+      ))}
+    </HStack>
+  );
+};
+
+export default PlatformIconList;
