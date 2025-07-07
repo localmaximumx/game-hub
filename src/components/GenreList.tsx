@@ -18,7 +18,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
   const { data, isLoading, error } = useGenres();
 
   if (error) return null;
-  if (isLoading) return <Spinner />;
+  if (isLoading) return <Spinner />; // not gonna be executed since we use local Genre names
   return (
     <List>
       <Heading marginBottom={5}> Genres </Heading>
@@ -28,14 +28,14 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
             <Image
               boxSize="32px"
               borderRadius={9}
-              objectFit='cover' // set the img or genre more clear
+              objectFit="cover" // set the img or genre more clear
               src={getCroppedImageUrl(genre.image_background)}
             />
             <Button
               variant="link"
               fontSize="lg"
-              whiteSpace= 'normal'
-              textAlign='left'
+              whiteSpace="normal"
+              textAlign="left"
               fontWeight={selectedGenre?.id === genre.id ? "bold" : "normal"}
               onClick={() => onSelectGenre(genre)}
             >
