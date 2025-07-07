@@ -7,6 +7,7 @@ import type { Genre } from "./hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
 import type { Platform } from "./hooks/useGames";
 import GameSort from "./components/GameSort";
+import GameHeading from "./components/GameHeading";
 
 export interface GameQuery {
   genre: Genre | undefined;
@@ -44,7 +45,8 @@ function App() {
           </GridItem>
         </Show>
         <GridItem area="main">
-          <Box margin={5}>
+          <Box paddingLeft={2} marginBottom={5}>
+            <GameHeading gameQuery={gameQuery} />
             <HStack spacing={4}>
               <PlatformSelector
                 selectedPlatform={gameQuery.platform}
