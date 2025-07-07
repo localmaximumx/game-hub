@@ -23,6 +23,7 @@ const useData = <T,>(endpoint: string, gameQuery?: GameQuery | undefined) => {
         params: {
           genres: gameQuery?.genre?.slug,
           platforms: gameQuery?.platform?.id,
+          ordering: gameQuery?.sort,
         },
       })
       .then((res) => {
