@@ -2,13 +2,18 @@ import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 import { CanceledError } from "axios";
 import type { Genre } from "./useGenres";
+import type { Platform } from "./useGames";
 
 interface FetchResponse<T> {
   count: number;
   results: T[];
 }
 
-const useData = <T,>(endpoint: string, selectedGenre?: Genre) => {
+const useData = <T,>(
+  endpoint: string,
+  selectedGenre?: Genre,
+  selectedPlatfomr?: Platform
+) => {
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
@@ -20,7 +25,10 @@ const useData = <T,>(endpoint: string, selectedGenre?: Genre) => {
     apiClient
       .get<FetchResponse<T>>(endpoint, {
         signal: controller.signal,
-        params: selectedGenre ? { genres: selectedGenre.slug } : {},
+        params: {
+          genres: selectedGenre?.slug,
+          platforms: selectedPlatfomr?.id,
+        },
       })
       .then((res) => {
         setLoading(false);
@@ -33,7 +41,7 @@ const useData = <T,>(endpoint: string, selectedGenre?: Genre) => {
       });
 
     return () => controller.abort(); // clean up function
-  }, [selectedGenre]);
+  }, [selectedGenre, selectedPlatfomr]);
 
   return { error, data, isLoading };
 };
