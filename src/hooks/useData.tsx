@@ -24,6 +24,7 @@ const useData = <T,>(endpoint: string, gameQuery?: GameQuery | undefined) => {
           genres: gameQuery?.genre?.slug,
           platforms: gameQuery?.platform?.id,
           ordering: gameQuery?.sort,
+          search: gameQuery?.search
         },
       })
       .then((res) => {

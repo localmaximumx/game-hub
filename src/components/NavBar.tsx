@@ -1,24 +1,17 @@
-import {
-  HStack,
-  Image,
-  Input,
-  InputGroup,
-  InputLeftElement,
-} from "@chakra-ui/react";
-import { BiSearch } from "react-icons/bi";
+import { HStack, Image } from "@chakra-ui/react";
 import logo from "../assets/logo.png";
 import ColorModeSwittch from "./ColorModeSwittch";
+import SearchInput from "./SearchInput";
 
-const NavBar = () => {
+interface Props {
+  onSearch: (event: string) => void;
+}
+
+const NavBar = ({ onSearch }: Props) => {
   return (
     <HStack justifyContent="space-between" padding="10px">
       <Image src={logo} boxSize="60px" />
-      <InputGroup>
-        <InputLeftElement>
-          <BiSearch size={20} />
-        </InputLeftElement>
-        <Input placeholder="Search games..." borderRadius={50} type="text" />
-      </InputGroup>
+      <SearchInput onSearch={onSearch} />
       <ColorModeSwittch />
     </HStack>
   );

@@ -4,7 +4,6 @@ import {
   Button,
   MenuList,
   MenuItem,
-  Box,
 } from "@chakra-ui/react";
 import { BsChevronBarDown } from "react-icons/bs";
 
@@ -25,7 +24,6 @@ const GameSort = ({ onSelectSortOrder, selectedSortOrder }: Props) => {
   const currentSortOrder = sortBy.find((m) => m.value === selectedSortOrder);
 
   return (
-    <Box paddingX={5}>
       <Menu>
         <MenuButton as={Button} rightIcon={<BsChevronBarDown />}>
           Order By: {currentSortOrder?.label || "Relevance"}
@@ -39,7 +37,6 @@ const GameSort = ({ onSelectSortOrder, selectedSortOrder }: Props) => {
           ))}
         </MenuList>
       </Menu>
-    </Box>
   );
 };
 
