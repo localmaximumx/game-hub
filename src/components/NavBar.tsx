@@ -1,5 +1,5 @@
 import { HStack, Image } from "@chakra-ui/react";
-import logo from "../assets/logo.png";
+import favicon from "../assets/favicon.svg";
 import ColorModeSwittch from "./ColorModeSwittch";
 import SearchInput from "./SearchInput";
 
@@ -10,7 +10,7 @@ interface Props {
 const NavBar = ({ onSearch }: Props) => {
   return (
     <HStack justifyContent="space-between" padding="10px">
-      <Image src={logo} boxSize="60px" />
+      <Image src={favicon} boxSize="100px" />
       <SearchInput onSearch={onSearch} />
       <ColorModeSwittch />
     </HStack>
